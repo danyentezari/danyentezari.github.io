@@ -300,6 +300,10 @@
         font-size: 14px;
         cursor: pointer;
       }
+      #my-form button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
       #my-form-status {
         margin: 0;
         color: var(--muted);
@@ -442,7 +446,7 @@
                 ></div>
                 <div class="latestLabel">Course Playlist</div>
                 <h3 class="latestTitle">
-                  Linear Mathematics and Neural Networks with Python with
+                  Linear Mathematics and Neural Networks with Python
                 </h3>
                 <p class="latestDesc"></p>
                 <a
@@ -564,6 +568,10 @@
               async function handleSubmit(event) {
                 event.preventDefault();
                 var status = document.getElementById("my-form-status");
+                var submitButton = document.getElementById("my-form-button");
+                submitButton.disabled = true;
+                submitButton.setAttribute("aria-busy", "true");
+                status.textContent = "Sending...";
                 var data = new FormData(event.target);
                 fetch(event.target.action, {
                   method: form.method,
@@ -574,24 +582,28 @@
                 })
                   .then((response) => {
                     if (response.ok) {
-                      status.innerHTML = "Thanks for your submission!";
+                      status.textContent = "Thanks for your submission!";
                       form.reset();
                     } else {
                       response.json().then((data) => {
                         if (Object.hasOwn(data, "errors")) {
-                          status.innerHTML = data["errors"]
+                          status.textContent = data["errors"]
                             .map((error) => error["message"])
                             .join(", ");
                         } else {
-                          status.innerHTML =
+                          status.textContent =
                             "Oops! There was a problem submitting your form";
                         }
                       });
                     }
                   })
-                  .catch((error) => {
-                    status.innerHTML =
+                  .catch(() => {
+                    status.textContent =
                       "Oops! There was a problem submitting your form";
+                  })
+                  .finally(() => {
+                    submitButton.disabled = false;
+                    submitButton.removeAttribute("aria-busy");
                   });
               }
               form.addEventListener("submit", handleSubmit);

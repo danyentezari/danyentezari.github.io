@@ -22,6 +22,8 @@
     <meta property="og:url" content="https://danyentezari.github.io/" />
 
     <style>
+      @import url("https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&display=swap");
+
       :root {
         --bg: #fff;
         --text: rgb(23, 23, 23);
@@ -31,12 +33,11 @@
         --blueText: #3a2a10;
         --black: rgb(23, 23, 23);
         --blackText: #fff;
-        --soft: #f3ebe2;
+        --soft: #f0f0f0;
         --surface: #ffffff;
         --surfaceElevated: #ffffff;
         --max: 800px;
-        --headingFont: "fontBureauSerif", "fontBureauSerif Fallback",
-          "Times New Roman", serif;
+        --headingFont: "Noto Serif", "Times New Roman", serif;
         --bodyFont: "Sohne", "Avenir Next", "Helvetica Neue", "Segoe UI",
           system-ui, sans-serif;
       }
@@ -263,14 +264,20 @@
         letter-spacing: 0.08em;
         text-transform: uppercase;
         color: var(--muted);
-        font-weight: 700;
-        padding: 14px 14px 0px 14px;
+        font-weight: 400;
+        padding: 4px 8px;
+        text-align: right;
+        background-color: var(--soft);
+        max-width: fit-content;
+        /* align-self:flex-end; */
+        border-radius: 8px;
+        margin-left: 14px;
       }
       .latestTitle {
         font-family: var(--headingFont);
         font-size: 18px;
         margin: 0;
-        padding: 0 14px;
+        padding: 14px 14px;
       }
       .latestDesc {
         margin: 0;
@@ -280,8 +287,9 @@
       }
       .latestLink {
         font-weight: 600;
-        color: var(--text);
+        color: var(--muted);
         padding: 0 14px 18px 14px;
+        font-size: 16px;
       }
 
       #contact-form {

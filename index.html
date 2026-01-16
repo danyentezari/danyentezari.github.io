@@ -23,16 +23,18 @@
 
     <style>
       :root {
-        --bg: #0f1115;
-        --text: #f2f5f8;
-        --muted: #a2acb6;
-        --line: #2a2f36;
-        --blue: #7fb3ff;
-        --blueText: #081a33;
-        --soft: #1a2332;
-        --surface: #151a21;
-        --surfaceElevated: #1b212a;
-        --max: 1080px;
+        --bg: #fff;
+        --text: rgb(23, 23, 23);
+        --muted: #6f6a64;
+        --line: #e3ddd5;
+        --blue: #ffd082;
+        --blueText: #3a2a10;
+        --black: rgb(23, 23, 23);
+        --blackText: #fff;
+        --soft: #f3ebe2;
+        --surface: #ffffff;
+        --surfaceElevated: #ffffff;
+        --max: 1020px;
         --headingFont: "fontBureauSerif", "fontBureauSerif Fallback",
           "Times New Roman", serif;
         --bodyFont: "Sohne", "Avenir Next", "Helvetica Neue", "Segoe UI",
@@ -47,7 +49,8 @@
       }
       body {
         margin: 0;
-        font: 16px/1.6 var(--bodyFont);
+        font: 18px/1 var(--bodyFont);
+        line-height: 18px/1 var(--bodyFont);
         background: var(--bg);
         color: var(--text);
       }
@@ -131,10 +134,11 @@
       }
       .profileGrid {
         display: grid;
-        grid-template-columns: 1fr 128px;
+        grid-template-columns: 128px 1fr;
         gap: 28px;
         align-items: start;
-        margin-top: 14px;
+        margin: 14px auto 0 auto;
+        max-width: 600px;
       }
       .avatar {
         width: 128px;
@@ -159,8 +163,8 @@
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
       }
       .btnPrimary {
-        background: var(--blue);
-        color: var(--blueText);
+        background: var(--black);
+        color: var(--blackText);
         border-color: #7bb0ff;
       }
       .iconRow {
@@ -185,6 +189,7 @@
       .section {
         margin-top: 26px;
       }
+
       .sectionTitle {
         font-weight: 600;
         margin: 0 0 10px;
@@ -220,11 +225,13 @@
         gap: 16px;
       }
       .latestCard {
-        /* border: 1px solid var(--line); */
+        border: 1px solid var(--line);
         border-radius: 8px;
         padding: 0px;
         background: var(--surfaceElevated);
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+        /* box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3); */
+        box-shadow: 0px 5px 14px var(--tw-shadow-color, #0000000d),
+          0px 2px 6px var(--tw-shadow-color, #0000000d);
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -232,9 +239,9 @@
       .latestBanner {
         width: 100%;
         aspect-ratio: 1.6 / 1;
-        border-radius: 8px;
+        border-radius: 8px 8px 0px 0px;
         background: linear-gradient(135deg, #2a3340, #1a2230);
-        border: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
       }
       .latestLabel {
         font-size: 12px;
@@ -262,20 +269,26 @@
         padding: 0 14px 18px 14px;
       }
 
-      #my-form {
-        max-width: 50%;
+      #contact-form {
+        max-width: 100%;
         margin-top: 12px;
         display: grid;
         gap: 12px;
-        padding: 16px;
+        padding: 24px;
         border-radius: 8px;
         background: var(--surface);
+        box-shadow: 0px 5px 14px var(--tw-shadow-color, #0000000d),
+          0px 2px 6px var(--tw-shadow-color, #0000000d);
+        border: 1px solid var(--line);
+        @media (max-width: 760px) {
+          max-width: 100%;
+        }
       }
-      #my-form label {
+      #contact-form label {
         font-weight: 600;
         color: var(--text);
       }
-      #my-form input {
+      #contact-form input {
         width: 100%;
         padding: 10px 12px;
         border-radius: 4px;
@@ -284,27 +297,27 @@
         color: var(--text);
         font: 14px/1.5 var(--bodyFont);
       }
-      #my-form input:focus {
+      #contact-form input:focus {
         outline: 2px solid var(--blue);
         outline-offset: 1px;
         border-color: transparent;
       }
-      #my-form button {
+      #contact-form button {
         justify-self: start;
         padding: 10px 16px;
         border-radius: 4px;
         border: 1px solid var(--line);
-        background: var(--blue);
-        color: var(--blueText);
+        background: var(--black);
+        color: var(--blackText);
         font-weight: 700;
         font-size: 14px;
         cursor: pointer;
       }
-      #my-form button:disabled {
+      #contact-form button:disabled {
         opacity: 0.6;
         cursor: not-allowed;
       }
-      #my-form-status {
+      #contact-form-status {
         margin: 0;
         color: var(--muted);
       }
@@ -372,6 +385,7 @@
       <main id="overview">
         <section class="pageGrid">
           <div class="profileGrid">
+            <div class="avatar" aria-hidden="true"></div>
             <div>
               <h1>Dany Entezari</h1>
               <p class="subtitle">
@@ -379,8 +393,24 @@
                 <a href="https://www.bignumber.io">Bignumber.io</a>
               </p>
             </div>
+          </div>
 
-            <div class="avatar" aria-hidden="true"></div>
+          <div class="section" id="About" style="max-width: 100%; margin: 0 auto;">
+            <h2>About</h2>
+            <p>
+              Dany Entezari is a applied mathematician and programmer. He has
+              consulted international clients in engineering and mathematics
+              including IBM, AWS, Google, Halliburton, and other Fortune 500
+              companies and government agencies. He is also founder at
+              Bignumber, a computational research company for information
+              retrieval and applications in the quantitative sciences. MSc, High
+              Performance Computing, University of Edinburgh.
+            </p>
+          </div>
+
+          <div class="section" id="Clients" style="max-width: 100%; margin: 0 auto;">
+            <h2>Clients</h2>
+           
           </div>
 
           <div class="section" id="latest">
@@ -575,19 +605,6 @@
             </div>
           </div>
 
-          <div class="section" id="About">
-            <h2>About</h2>
-            <p>
-              Dany Entezari is a applied mathematician and programmer. He has
-              consulted international clients in engineering and mathematics
-              including IBM, AWS, Google, Halliburton, and other Fortune 500
-              companies and government agencies. He is also founder at
-              Bignumber, a computational research company for information
-              retrieval and applications in the quantitative sciences. MSc, High
-              Performance Computing, University of Edinburgh.
-            </p>
-          </div>
-
           <div class="section" id="contact">
             <h2>Contact</h2>
             <p>
@@ -597,7 +614,7 @@
 
             <!-- modify this form HTML and place wherever you want your form -->
             <form
-              id="my-form"
+              id="contact-form"
               action="https://formspree.io/f/mnjjnlgw"
               method="POST"
             >
@@ -607,18 +624,20 @@
               <input type="email" name="email" />
               <label>Message:</label>
               <input type="text" name="message" />
-              <button id="my-form-button">Submit</button>
-              <p id="my-form-status"></p>
+              <button id="contact-form-button">Submit</button>
+              <p id="contact-form-status"></p>
             </form>
 
             <!-- Place this script at the end of the body tag -->
             <script>
-              var form = document.getElementById("my-form");
+              var form = document.getElementById("contact-form");
 
               async function handleSubmit(event) {
                 event.preventDefault();
-                var status = document.getElementById("my-form-status");
-                var submitButton = document.getElementById("my-form-button");
+                var status = document.getElementById("contact-form-status");
+                var submitButton = document.getElementById(
+                  "contact-form-button"
+                );
                 submitButton.disabled = true;
                 submitButton.setAttribute("aria-busy", "true");
                 status.textContent = "Sending...";

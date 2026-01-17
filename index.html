@@ -9,6 +9,10 @@
       content="Lectures, articles, and courses in the mathematics of information by Dany Entezari."
     />
     <meta name="author" content="Dany Entezari" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
 
     <meta
       property="og:title"
@@ -257,8 +261,21 @@
 
       .latestGrid {
         display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        /* gap: 16px; */
+      }
+      .teachingSwiper {
+        width: 100vw;
+        margin-left: calc(50% - 50vw);
+        padding: 0 20px;
+      }
+      .teachingSwiper .swiper-wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         gap: 16px;
+      }
+      .teachingSwiper .swiper-slide {
+        height: auto;
       }
       .latestCard {
         border: 1px solid var(--line);
@@ -270,7 +287,7 @@
           0px 2px 6px var(--tw-shadow-color, #0000000d);
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        /* gap: 10px; */
       }
       .latestBanner {
         width: 100%;
@@ -280,6 +297,7 @@
         border-bottom: 1px solid var(--line);
       }
       .latestLabel {
+        margin-top: 12px;
         font-size: 12px;
         letter-spacing: 0.08em;
         text-transform: uppercase;
@@ -405,6 +423,9 @@
         .logoGrid {
           grid-template-columns: repeat(4, minmax(0, 1fr));
         }
+        .teachingSwiper .swiper-wrapper {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
       }
       @media (max-width: 760px) {
         .profileGrid {
@@ -412,6 +433,23 @@
         }
         .latestGrid {
           grid-template-columns: 1fr;
+        }
+        .teachingSwiper {
+          padding: 0 24px;
+        }
+        .teachingSwiper .swiper-wrapper {
+          grid-template-columns: 1fr;
+        }
+      }
+      @media (min-width: 980px) {
+        .teachingSwiper .swiper-wrapper {
+          display: flex;
+          gap: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+        }
+        .teachingSwiper .swiper-slide {
+          width: 280px;
         }
       }
     </style>
@@ -542,200 +580,202 @@
             <p>
               Mathematical consulting services cover mathematical modelling,
               simulations, statistical modelling, operational research,
-              artificial intelligence, and software
-              development. Case studies only available on request.
+              artificial intelligence, and software development. Case studies
+              only available on request.
             </p>
           </div>
 
           <div class="section" id="teaching">
             <h2>Teaching</h2>
-            <p>Example lessons, lectures, and courses for general audience.</p>
-            <div class="latestGrid">
-              <article class="latestCard">
-                <div
-                  class="latestBanner"
-                  aria-hidden="true"
-                  style="
-                    background-image: url(./images/llm.png);
-                    background-size: cover;
-                    background-position: top;
-                  "
-                ></div>
-                <div class="latestLabel">Article</div>
-                <h3 class="latestTitle">
-                  Mathematical Introduction to Large Language Models
-                </h3>
-                <p class="latestDesc"></p>
-                <a
-                  class="latestLink"
-                  href="https://danyentezari.substack.com/p/2914d0d2-a229-4f27-bc45-654da043b20f?postPreview=paid&updated=2026-01-15T00%3A21%3A58.185Z&audience=everyone&free_preview=false&freemail=true"
-                  target="_blank"
-                  rel="noopener"
-                  >Read on Substack</a
-                >
-              </article>
+            <p>Lessons, lectures, and courses.</p>
+            <div class="swiper teachingSwiper">
+              <div class="swiper-wrapper latestGrid">
+                <article class="latestCard swiper-slide">
+                  <div
+                    class="latestBanner"
+                    aria-hidden="true"
+                    style="
+                      background-image: url(./images/llm.png);
+                      background-size: cover;
+                      background-position: top;
+                    "
+                  ></div>
+                  <div class="latestLabel">Article</div>
+                  <h3 class="latestTitle">
+                    Mathematical Introduction to Large Language Models
+                  </h3>
+                  <p class="latestDesc"></p>
+                  <a
+                    class="latestLink"
+                    href="https://danyentezari.substack.com/p/2914d0d2-a229-4f27-bc45-654da043b20f?postPreview=paid&updated=2026-01-15T00%3A21%3A58.185Z&audience=everyone&free_preview=false&freemail=true"
+                    target="_blank"
+                    rel="noopener"
+                    >Read on Substack</a
+                  >
+                </article>
 
-              <article class="latestCard">
-                <div
-                  class="latestBanner"
-                  aria-hidden="true"
-                  style="
-                    background-image: url(./images/statistics-probability-theory.avif);
-                    background-size: cover;
-                    background-position: center;
-                  "
-                ></div>
-                <div class="latestLabel">Video</div>
-                <h3 class="latestTitle">
-                  Statistics and Probability Theory: The Basic Idea
-                </h3>
-                <p class="latestDesc"></p>
-                <a
-                  class="latestLink"
-                  href="https://www.youtube.com/watch?v=PFOud1OfmM4"
-                  target="_blank"
-                  rel="noopener"
-                  >Watch on YouTube</a
-                >
-              </article>
+                <article class="latestCard swiper-slide">
+                  <div
+                    class="latestBanner"
+                    aria-hidden="true"
+                    style="
+                      background-image: url(./images/statistics-probability-theory.avif);
+                      background-size: cover;
+                      background-position: center;
+                    "
+                  ></div>
+                  <div class="latestLabel">Video</div>
+                  <h3 class="latestTitle">
+                    Statistics and Probability Theory: The Basic Idea
+                  </h3>
+                  <p class="latestDesc"></p>
+                  <a
+                    class="latestLink"
+                    href="https://www.youtube.com/watch?v=PFOud1OfmM4"
+                    target="_blank"
+                    rel="noopener"
+                    >Watch on YouTube</a
+                  >
+                </article>
 
-              <article class="latestCard">
-                <div
-                  class="latestBanner"
-                  aria-hidden="true"
-                  style="
-                    background-image: url(./images/playlist.jpg);
-                    background-size: cover;
-                    background-position: center;
-                  "
-                ></div>
-                <div class="latestLabel">Course Playlist</div>
-                <h3 class="latestTitle">
-                  Linear Mathematics and Neural Networks with Python
-                </h3>
-                <p class="latestDesc"></p>
-                <a
-                  class="latestLink"
-                  href="https://www.youtube.com/playlist?list=PLyEUMdxGyloFOcIYXIfw7nMBEbOGIMW5I"
-                  target="_blank"
-                  rel="noopener"
-                  >Watch on YouTube</a
-                >
-              </article>
+                <article class="latestCard swiper-slide">
+                  <div
+                    class="latestBanner"
+                    aria-hidden="true"
+                    style="
+                      background-image: url(./images/playlist.jpg);
+                      background-size: cover;
+                      background-position: center;
+                    "
+                  ></div>
+                  <div class="latestLabel">Course Playlist</div>
+                  <h3 class="latestTitle">
+                    Linear Mathematics and Neural Networks with Python
+                  </h3>
+                  <p class="latestDesc"></p>
+                  <a
+                    class="latestLink"
+                    href="https://www.youtube.com/playlist?list=PLyEUMdxGyloFOcIYXIfw7nMBEbOGIMW5I"
+                    target="_blank"
+                    rel="noopener"
+                    >Watch on YouTube</a
+                  >
+                </article>
 
-              <article class="latestCard">
-                <div
-                  class="latestBanner"
-                  aria-hidden="true"
-                  style="
-                    background-image: url(./images/learning-math-for-data-science.avif);
-                    background-size: cover;
-                    background-position: center;
-                  "
-                ></div>
-                <div class="latestLabel">Video</div>
-                <h3 class="latestTitle">
-                  Learning Mathematics for Data Science
-                </h3>
-                <p class="latestDesc"></p>
-                <a
-                  class="latestLink"
-                  href="https://www.youtube.com/watch?v=xtHtuFcOnn0"
-                  target="_blank"
-                  rel="noopener"
-                  >Watch on YouTube</a
-                >
-              </article>
+                <article class="latestCard swiper-slide">
+                  <div
+                    class="latestBanner"
+                    aria-hidden="true"
+                    style="
+                      background-image: url(./images/learning-math-for-data-science.avif);
+                      background-size: cover;
+                      background-position: center;
+                    "
+                  ></div>
+                  <div class="latestLabel">Video</div>
+                  <h3 class="latestTitle">
+                    Learning Mathematics for Data Science
+                  </h3>
+                  <p class="latestDesc"></p>
+                  <a
+                    class="latestLink"
+                    href="https://www.youtube.com/watch?v=xtHtuFcOnn0"
+                    target="_blank"
+                    rel="noopener"
+                    >Watch on YouTube</a
+                  >
+                </article>
 
-              <article class="latestCard">
-                <div
-                  class="latestBanner"
-                  aria-hidden="true"
-                  style="
-                    background-image: url(./images/handbook.png);
-                    background-size: cover;
-                    background-position: center;
-                  "
-                ></div>
-                <div class="latestLabel">PDF</div>
-                <h3 class="latestTitle">
-                  Mathematical Statistics Handbook (Draft)
-                </h3>
-                <p class="latestDesc"></p>
-                <a
-                  class="latestLink"
-                  href="https://bignumberio-docs.netlify.app/mathstat.pdf"
-                  target="_blank"
-                  rel="noopener"
-                  >Read PDF</a
-                >
-              </article>
+                <article class="latestCard swiper-slide">
+                  <div
+                    class="latestBanner"
+                    aria-hidden="true"
+                    style="
+                      background-image: url(./images/handbook.png);
+                      background-size: cover;
+                      background-position: center;
+                    "
+                  ></div>
+                  <div class="latestLabel">PDF</div>
+                  <h3 class="latestTitle">
+                    Mathematical Statistics Handbook (Draft)
+                  </h3>
+                  <p class="latestDesc"></p>
+                  <a
+                    class="latestLink"
+                    href="https://bignumberio-docs.netlify.app/mathstat.pdf"
+                    target="_blank"
+                    rel="noopener"
+                    >Read PDF</a
+                  >
+                </article>
 
-              <article class="latestCard">
-                <div
-                  class="latestBanner"
-                  aria-hidden="true"
-                  style="
-                    background-image: url(./images/imbalanced-data.jpg);
-                    background-size: 110%;
-                    background-position: center;
-                  "
-                ></div>
-                <div class="latestLabel">Video</div>
-                <h3 class="latestTitle">Learning from Imbalanced Data</h3>
-                <p class="latestDesc"></p>
-                <a
-                  class="latestLink"
-                  href="https://www.youtube.com/watch?v=a0em1cBf2ew"
-                  target="_blank"
-                  rel="noopener"
-                  >Watch on YouTube</a
-                >
-              </article>
+                <article class="latestCard swiper-slide">
+                  <div
+                    class="latestBanner"
+                    aria-hidden="true"
+                    style="
+                      background-image: url(./images/imbalanced-data.jpg);
+                      background-size: 110%;
+                      background-position: center;
+                    "
+                  ></div>
+                  <div class="latestLabel">Video</div>
+                  <h3 class="latestTitle">Learning from Imbalanced Data</h3>
+                  <p class="latestDesc"></p>
+                  <a
+                    class="latestLink"
+                    href="https://www.youtube.com/watch?v=a0em1cBf2ew"
+                    target="_blank"
+                    rel="noopener"
+                    >Watch on YouTube</a
+                  >
+                </article>
 
-              <article class="latestCard">
-                <div
-                  class="latestBanner"
-                  aria-hidden="true"
-                  style="
-                    background-image: url(./images/bayesian-theorem.jpg);
-                    background-size: 110%;
-                    background-position: center;
-                  "
-                ></div>
-                <div class="latestLabel">Video</div>
-                <h3 class="latestTitle">Derivation of Bayes Theorem</h3>
-                <p class="latestDesc"></p>
-                <a
-                  class="latestLink"
-                  href="https://www.youtube.com/watch?v=PLhAe5Um1iI"
-                  target="_blank"
-                  rel="noopener"
-                  >Watch on YouTube</a
-                >
-              </article>
+                <article class="latestCard swiper-slide">
+                  <div
+                    class="latestBanner"
+                    aria-hidden="true"
+                    style="
+                      background-image: url(./images/bayesian-theorem.jpg);
+                      background-size: 110%;
+                      background-position: center;
+                    "
+                  ></div>
+                  <div class="latestLabel">Video</div>
+                  <h3 class="latestTitle">Derivation of Bayes Theorem</h3>
+                  <p class="latestDesc"></p>
+                  <a
+                    class="latestLink"
+                    href="https://www.youtube.com/watch?v=PLhAe5Um1iI"
+                    target="_blank"
+                    rel="noopener"
+                    >Watch on YouTube</a
+                  >
+                </article>
 
-              <article class="latestCard">
-                <div
-                  class="latestBanner"
-                  aria-hidden="true"
-                  style="
-                    background-image: url(./images/MLE-github.png);
-                    background-size: 110%;
-                    background-position: left center;
-                  "
-                ></div>
-                <div class="latestLabel">Lesson</div>
-                <h3 class="latestTitle">Maximum Likelihood Estimation</h3>
-                <p class="latestDesc"></p>
-                <a
-                  class="latestLink"
-                  href="https://github.com/danyentezari/bignumber-material/blob/master/lessons/maximum-likelihood.md"
-                  target="_blank"
-                  rel="noopener"
-                  >Read on GitHub</a
-                >
-              </article>
+                <article class="latestCard swiper-slide">
+                  <div
+                    class="latestBanner"
+                    aria-hidden="true"
+                    style="
+                      background-image: url(./images/MLE-github.png);
+                      background-size: 110%;
+                      background-position: left center;
+                    "
+                  ></div>
+                  <div class="latestLabel">Lesson</div>
+                  <h3 class="latestTitle">Maximum Likelihood Estimation</h3>
+                  <p class="latestDesc"></p>
+                  <a
+                    class="latestLink"
+                    href="https://github.com/danyentezari/bignumber-material/blob/master/lessons/maximum-likelihood.md"
+                    target="_blank"
+                    rel="noopener"
+                    >Read on GitHub</a
+                  >
+                </article>
+              </div>
             </div>
           </div>
 
@@ -841,6 +881,31 @@
 
     <script>
       document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+      var teachingSwiper = new Swiper(".teachingSwiper", {
+        slidesPerView: "auto",
+        spaceBetween: 16,
+        freeMode: {
+          enabled: true,
+        },
+        mousewheel: {
+          forceToAxis: true,
+          sensitivity: 1,
+        },
+        breakpoints: {
+          0: {
+            enabled: false,
+          },
+          980: {
+            enabled: true,
+            touchReleaseOnEdges: true,
+            slidesOffsetBefore: 0,
+            slidesOffsetAfter: 90,
+          },
+        },
+      });
     </script>
   </body>
 </html>
